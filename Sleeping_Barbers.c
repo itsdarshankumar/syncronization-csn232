@@ -107,8 +107,8 @@ int main(int argc, char **argv)
 		pthread_join(threads[it], NULL);		
 	}
 
-	sem_destroy(&s);
-	sem_destroy(&barber);
+	semaphore_destroy(&s);
+	semaphore_destroy(&barber);
 	printf("\nBarbershop Problem Simulation Completed/n");
 	
 	return(0);
