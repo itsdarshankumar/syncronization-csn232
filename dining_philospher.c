@@ -37,13 +37,18 @@ void *Philosphers(void *num){
 	//
 	sem_wait(&ch[(ind+1)%5]);
 	printf("Philospher %d picks chopstick to his right",ind);
+	printf("\n");
 	printf("Philospher %d starts eating",ind);
+	printf("\n");
 	sleep(5);
 	printf("Philospher %d is done with eating",ind);
+	printf("\n");
 	//
 	sem_post(&ch[(ind+1)%5]);
 	printf("Philospher %d puts down chopstick to his right, down",ind);
+	printf("\n");
 	//
 	sem_post(&ch[ind]);
 	printf("Philospher %d puts down chopstick to his left, down",ind);
+	printf("\n");
 }
