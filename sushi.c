@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <pthread.h>
-#include <sem.h>
+#include "sem.h"
 #include <unistd.h>
 #include <stdbool.h>
 
