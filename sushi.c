@@ -29,29 +29,30 @@ void *customer_sushi(void *num) {
     else {
         cust_sitting++;
         printf("Customer %d seated\n", ind);
-        has_waiting = (cust_sitting == 5);
+        has_waiting = (cust_sitting == MAX_CUSTOMERS);
         sem_post(&mutex);
     }
 
     printf("Customer %d having sushi\n", ind);
+    sleep(1);
 
     sem_wait(&mutex);
     printf("Customer %d finished eating\n", ind);
     cust_sitting--;
     if (cust_sitting == 0) {
-        if (cust_waiting < 5) {
+        if (cust_waiting < MAX_CUSTOMERS) {
             for (int i = 0; i < cust_waiting; i++) {
                 sem_post(&block);
             }
             cust_sitting += cust_waiting;
             cust_waiting = 0;
-            has_waiting = (cust_sitting==5);
+            has_waiting = (cust_sitting==MAX_CUSTOMERS);
         }
         else {
-            cust_waiting-=5;
-            cust_sitting+=5;
+            cust_waiting-=MAX_CUSTOMERS;
+            cust_sitting+=MAX_CUSTOMERS;
             has_waiting = true;
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < MAX_CUSTOMERS; i++) {
                 sem_post(&block);
             }
         }
