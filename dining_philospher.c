@@ -1,17 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
-#include<semaphore.h>
+#include "sem.h"
 #include<pthread.h>
 
-sem_t ch[5];
+semaphore ch[5];
 void *Philosphers(void *);
 
 int main(){
 	int num[5];
 	pthread_t Threads[5];
 	for(int i=0;i<5;i++)
-		sem_init(&ch[i],0,1);
+		semaphore_inititialization(&ch[i],1);
 	for(int i=0;i<5;i++){
 		num[i]=i;
 		pthread_create(&Threads[i],NULL,Philosphers,(void*)&num[i]);
