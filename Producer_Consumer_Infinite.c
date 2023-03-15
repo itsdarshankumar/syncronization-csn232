@@ -7,7 +7,6 @@
 #define production_time 1
 #define consumption_time 1
 
-
 struct node {
     int data;
     struct node* next;
